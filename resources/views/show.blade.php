@@ -12,7 +12,7 @@
 				<div class="col-md-4">
 					<img src="/images/{{$katalog->gambar}}" alt="{{$katalog->judul}}">
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 classified-controls">
 					<h3>Deskripsi</h3>
 					<p>{{$katalog->deskripsi}}</p>
 					<h3>Detil Katalog</h3>
@@ -26,6 +26,16 @@
 						<li class="list-group-item">Email: {{$katalog->email}}</li>
 						<li class="list-group-item">Telpon: {{$katalog->telpon}}</li>
 					</ul>
+					@if(!Auth::guest())
+						@if(Auth::user()->id==$katalog->pemilik_id)
+					<div class="pull-right classified-controls">
+						<a href="/katalog/{{$katalog->id}}/edit" class="btn btn-default"> Ubah </a>
+					</div>
+					{!! Form::open(['action' => ['KatalogController@destroy', $katalog->id], 'method' => 'DELETE']) !!}
+						{!! Form::submit('Hapus ?', $attribute = ['class' => 'btn btn-danger']) !!}
+					{!! Form::close() !!}
+						@endif
+					@endif
 				</div>
 			</div>
 		</div>

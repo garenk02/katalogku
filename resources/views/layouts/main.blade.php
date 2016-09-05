@@ -9,7 +9,7 @@
     <title>KatalogKu.com - @yield('title')</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
   </head>
 
@@ -51,7 +51,15 @@
       <div class="row">
         <div class="col-md-3">
           @section('sidebar')
-            Ini adalah Sidebar
+            {!! Form::open(['action' => 'KatalogController@search', 'method' => 'GET']) !!}
+              {!! Form::text('q', null, ['class' => 'form-control', 'placeholder' => 'Cari sesuatu...']) !!}
+            {!! Form::close() !!}
+            <br />
+            <div class="list-group">
+              @foreach($kategori as $menu)
+              <a href="/kategori/{{$menu->id}}" class="list-group-item">{{$menu->nama}}</a>
+              @endforeach
+            </div>
           @show
         </div>
         <div class="col-md-9">
@@ -73,7 +81,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>

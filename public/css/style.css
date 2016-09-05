@@ -4,3 +4,9 @@
 	border: 1px solid #ccc;
 	padding: 10px;
 }
+
+.classified-controls form {
+	float: right;
+	display: inline;
+	margin: 0 10px;
+}

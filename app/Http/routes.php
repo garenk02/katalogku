@@ -18,6 +18,7 @@ Route::resource('katalog','KatalogController');
 
 // Route Kategori
 Route::resource('kategori','KategoriController');
+Route::get('/search','KatalogController@search');
 
 // Auth Routes Login
 Route::get('/auth/login','Auth\AuthController@getLogin');
